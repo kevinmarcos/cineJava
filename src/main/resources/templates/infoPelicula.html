@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Info</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="card" style="width: 18rem;">
+            <img th:src = "@{/images/{img} (img=${infoPelicula.imagen})}" width = "120" height = "110" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${infoPelicula.nombre}"></h5>
+                <p class="card-text" th:text="${infoPelicula.sinopsis}"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Duración:  <b th:text="${infoPelicula.duracion}"></b></li>
+                <li class="list-group-item">Idioma:  <b th:text="${infoPelicula.idioma}"></b></li>
+                <li class="list-group-item">Genero:  <b th:text="${infoPelicula.genero}"></b></li>
+                <li class="list-group-item">Clasificación:  <b th:text="${infoPelicula.clasificacion}"></b></li>
+                <li class="list-group-item">Formato:  <b th:text="${infoPelicula.formato}"></b></li>
+                <li class="list-group-item">Fecha:  <b th:text="${infoPelicula.fecha}"></b></li>
+                <li class="list-group-item">Destacado:  
+                    <b th:if="${infoPelicula.destacado == 1 }" class="badge bg-success">SI</b>
+                    <b th:unless="${infoPelicula.destacado == 1 }" class="badge bg-danger">NO</b>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </body>
+</html>
