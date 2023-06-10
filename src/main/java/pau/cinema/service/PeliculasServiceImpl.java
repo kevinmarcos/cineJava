@@ -30,7 +30,7 @@ public class PeliculasServiceImpl implements IPeliculasService {
             pelicula.setClasificacion("APT");
             pelicula.setIdioma("Ingles");
             pelicula.setGenero("Aventura-Ciencia Ficcion-Comedia");
-            pelicula.setFormato("4D");
+            pelicula.setFormato("3D");
             pelicula.setSinopsis("Los hermanos Mario y Luigi se embarcan en una peligrosa misión para rescatar a la princesa Peach y derrotar al malvado Bowser.");
             pelicula.setImagen("SuperMario.png");
             pelicula.setFecha(sdf.parse("11-05-2023"));
