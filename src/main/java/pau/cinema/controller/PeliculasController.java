@@ -36,10 +36,6 @@ public class PeliculasController {
 		
 		Pelicula pelicula = servicePeliculas.buscarPorId(idPelicula);
 		
-		
-		System.out.println("Pelicula: " + pelicula);
-		
-		
 		model.addAttribute("infoPelicula", pelicula);
 		
 		return "infoPelicula";
