@@ -1,32 +1,81 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Info</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div class="card" style="width: 18rem;">
-            <img th:src = "@{/images/{img} (img=${infoPelicula.imagen})}" width = "120" height = "110" class="card-img-top" alt="...">
+
+<head>
+    <title>Info</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: grey;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CineStar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <span class="navbar-text"> Exit </span>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card mb-3">
+            <div style="background-color: black">
+                <img th:src="@{/images/{img} (img=${infoPelicula.imagen})}" width="120" height="550"
+                    class="card-img-top" alt="..." style="object-fit: contain" />
+            </div>
             <div class="card-body">
                 <h5 class="card-title" th:text="${infoPelicula.nombre}"></h5>
                 <p class="card-text" th:text="${infoPelicula.sinopsis}"></p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Duración: <b th:text="${infoPelicula.duracion}"></b>
+                    </li>
+                    <li class="list-group-item">
+                        Idioma: <b th:text="${infoPelicula.idioma}"></b>
+                    </li>
+                    <li class="list-group-item">
+                        Genero: <b th:text="${infoPelicula.genero}"></b>
+                    </li>
+                    <li class="list-group-item">
+                        Clasificación: <b th:text="${infoPelicula.clasificacion}"></b>
+                    </li>
+                    <li class="list-group-item">
+                        Formato: <b th:text="${infoPelicula.formato}"></b>
+                    </li>
+                    <li class="list-group-item">
+                        Fecha: <b th:text="${infoPelicula.fecha}"></b>
+                    </li>
+                    <li class="list-group-item">
+                        Destacado:
+                        <b th:if="${infoPelicula.destacado == 1 }" class="badge bg-success">SI</b>
+                        <b th:unless="${infoPelicula.destacado == 1 }" class="badge bg-danger">NO</b>
+                    </li>
+                </ul>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Duración:  <b th:text="${infoPelicula.duracion}"></b></li>
-                <li class="list-group-item">Idioma:  <b th:text="${infoPelicula.idioma}"></b></li>
-                <li class="list-group-item">Genero:  <b th:text="${infoPelicula.genero}"></b></li>
-                <li class="list-group-item">Clasificación:  <b th:text="${infoPelicula.clasificacion}"></b></li>
-                <li class="list-group-item">Formato:  <b th:text="${infoPelicula.formato}"></b></li>
-                <li class="list-group-item">Fecha:  <b th:text="${infoPelicula.fecha}"></b></li>
-                <li class="list-group-item">Destacado:  
-                    <b th:if="${infoPelicula.destacado == 1 }" class="badge bg-success">SI</b>
-                    <b th:unless="${infoPelicula.destacado == 1 }" class="badge bg-danger">NO</b>
-                </li>
-                
-            </ul>
-            
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

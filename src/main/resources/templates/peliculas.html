@@ -1,33 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Peliculas</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <center><img th:src="@{images/cartelera.jpg}" width= "250" height="250"></center>
-        <h1 ><center>CARTELERA</center></h1>
-         <table class="table table-striped table-dark">
+
+<head>
+    <title>Peliculas</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <img th:src="@{images/cartelera.jpg}" width="70" height="70" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <span class="navbar-text"> Exit </span>
+            </div>
+        </div>
+    </nav>
+
+    <h1>
+        <center>CARTELERA</center>
+    </h1>
+    <table class="table table-striped table-dark">
         <tr>
-               <td><center>IMAGEN</center></td>
-               <td>ID</td>
-               <td>PELICULA</td>
-               <td>DURACION</td>
-               <td>CLASIFICACION</td>
-               <td>IDIOMA</td>
-               <td>GENERO</td>
-               <td>FORMATO</td>
-               <td>SINOPSIS</td>
-               <td>DESTACADO</td>
-               <td>INFO</td>
-               <td>ELIMINAR</td>
-        </tr>
-        <tr th:each ="pelicula: ${peliculas}">
             <td>
-               <center><img th:src = "@{/images/{img} (img=${pelicula.imagen})}" width = "120" height = "110"></center>
+                <center>IMAGEN</center>
+            </td>
+            <td>ID</td>
+            <td>PELICULA</td>
+            <td>DURACION</td>
+            <td>CLASIFICACION</td>
+            <td>IDIOMA</td>
+            <td>GENERO</td>
+            <td>FORMATO</td>
+            <td>SINOPSIS</td>
+            <td>DESTACADO</td>
+            <td>INFO</td>
+            <td>ELIMINAR</td>
+        </tr>
+        <tr th:each="pelicula: ${peliculas}">
+            <td>
+                <center>
+                    <img th:src="@{/images/{img} (img=${pelicula.imagen})}" width="120" height="110" />
+                </center>
             </td>
             <td th:text="${pelicula.id}"></td>
             <td th:text="${pelicula.nombre}"></td>
@@ -39,8 +73,8 @@
             <td th:text="${pelicula.sinopsis}"></td>
             <!-- <td th:text="${veterinaria.destacado}"></td>-->
             <td>
- 		<span th:if="${pelicula.destacado==1}" class="badge bg-success">Si</span>
- 		<span th:unless="${pelicula.destacado ==1}" class="badge bg-danger">No</span>
+                <span th:if="${pelicula.destacado==1}" class="badge bg-success">Si</span>
+                <span th:unless="${pelicula.destacado ==1}" class="badge bg-danger">No</span>
             </td>
             <td>
                 <a th:href="@{peliculas/view/{id} (id=${pelicula.id})}" class="btn btn-info">INFO</a>
@@ -49,6 +83,7 @@
                 <a th:href="@{peliculas/delete/{id} (id=${pelicula.id})}" class="btn btn-danger">ELIMINAR</a>
             </td>
         </tr>
-        </table>
-    </body>
+    </table>
+</body>
+
 </html>
